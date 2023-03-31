@@ -1,4 +1,4 @@
-Github repository: https://github.com/vuonghuuphuc/cloud-developer-project04.git
+Github repository: https://github.com/vuonghuuphuc/cloud-developer-final.git
 
 # Serverless TODO
 
