@@ -32,6 +32,15 @@ export class AttachmentUtils {
         }).promise()
     }
 
+    async deleteTodoAttachment(attachmentUrl: string){
+        const arr = attachmentUrl.split("/")
+        const attachmentKey = arr[arr.length - 1]
+        return await this.s3Client.deleteObject({
+            Bucket: this.todosBucket,
+            Key: attachmentKey,
+        }).promise()
+    }
+
     generateAttachmentPresignedUrl(attachmentId: string) {
         return this.s3Client.getSignedUrl('putObject', {
             Bucket: this.todosBucket,
