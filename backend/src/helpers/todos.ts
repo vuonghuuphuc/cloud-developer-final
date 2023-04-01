@@ -33,8 +33,15 @@ export async function getTodosForUser(userId: string) {
 
 //Delete todo by id
 export async function deleteTodo(todoId: string, userId: string) {
-    //Get todos created by user id
     return todoAccess.deleteTodo(todoId, userId);
+}
+
+//Delete todo attachment by id
+export async function deleteTodoAttachment(todoId: string, userId: string) {
+    const thisTodo = await todoAccess.getTodo(todoId, userId);
+    await attachmentAccess.deleteTodoAttachment(thisTodo.attachmentUrl)
+    await attachmentAccess.updateTodoAttachmentUrl(todoId, userId, "");
+    return thisTodo;
 }
 
 //Update todo
